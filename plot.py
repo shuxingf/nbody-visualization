@@ -11,10 +11,10 @@ import pynbody.plot.sph as sph
 #see https://bitbucket.org/yymao/helpers/src/master/ for installation
 from helpers.SimulationAnalysis import readHlist
 
-def plot_snapshot( f_short_cdm, cdm_halos, cdm_subhalos, f_short_sidm, sidm_halos, sidm_subhalos):
-    snapshot=["%03d" % x for x in range(10)]
-    for i in range(10):
-        print("plotting i = " + str(i))
+def plot_snapshot(snapshot, f_short_cdm, cdm_halos, cdm_subhalos, f_short_sidm, sidm_halos, sidm_subhalos):
+    #snapshot=["%03d" % x for x in range(10)]
+    for i in range(len(snapshot)):
+        print("plotting i = " + snapshot[i])
         plt.figure(figsize=(12,12))
 
         plt.subplot(111)
@@ -43,7 +43,7 @@ def plot_snapshot( f_short_cdm, cdm_halos, cdm_subhalos, f_short_sidm, sidm_halo
 
         plt.tight_layout()
     
-        print("save cdm_visualization")
+        print("save cdm_visualization" + snapshot[i])
         plt.savefig("/home1/shuxingf/cdm_visualization/cdm_visualization" + snapshot[i] + ".png")
 
         plt.figure(figsize=(12,12))
@@ -73,7 +73,7 @@ def plot_snapshot( f_short_cdm, cdm_halos, cdm_subhalos, f_short_sidm, sidm_halo
         plt.axis('off')
 
         plt.tight_layout()
-        print("save sidm_visualization")
+        print("save sidm_visualization" + snapshot[i])
         plt.savefig("/home1/shuxingf/sidm_visualization/sidm_visualization" + snapshot[i] + ".png")
     return
     

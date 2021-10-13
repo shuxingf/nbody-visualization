@@ -12,7 +12,7 @@ import pynbody.plot.sph as sph
 from helpers.SimulationAnalysis import readHlist
 
 def subselect(cdm_halos, sidm_halos, f_cdm, f_short_cdm, f_sidm, f_short_sidm ):
-   # snapshot=["%03d" % x for x in range(236)]
+   
    # for i in range(236):
        # assert(np.argmax(cdm_halos[snapshot[i]]['mvir'])==0)
        # assert(np.argmax(sidm_halos[snapshot[i]]['Mvir'])==0)

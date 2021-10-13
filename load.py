@@ -73,17 +73,18 @@ sidm_hlist = ['0.05000', '0.05064', '0.05129', '0.05195', '0.05262', '0.05329', 
        '0.86916', '0.88031', '0.89161', '0.90305', '0.91463', '0.92637', '0.93825', '0.95029',
        '0.96248', '0.97483', '0.98733', '1.00000']
 
-def load(f_cdm, cdm_halos, cdm_subhalos, f_sidm, sidm_halos, sidm_subhalos):
-    snapshot=["%03d" % x for x in range(10)]
-    for i in range(10):
-       print("loading i = " + str(i))
+def load(snapshot, f_cdm, cdm_halos, cdm_subhalos, f_sidm, sidm_halos, sidm_subhalos):
+    
+    for i in range(len(snapshot)):
+       print("loading i = " + snapshot[i])
     #Load CDM particle data at the final snapshot and corresponding halo list ("hlist")
     
        f_cdm[snapshot[i]] = pynbody.load("/scratch/enadler/SIDM/Halo558/output/snapshot_" + snapshot[i])
-       cdm_halos[snapshot[i]] = readHlist('/scratch/enadler/SIDM/Halo558/rockstar/hlists/hlist_' + cdm_hlist[i] + '.list')
+       num = int(snapshot[i])
+       cdm_halos[snapshot[i]] = readHlist('/scratch/enadler/SIDM/Halo558/rockstar/hlists/hlist_' + cdm_hlist[num] + '.list')
        cdm_subhalos[snapshot[i]] = cdm_halos[snapshot[i]][cdm_halos[snapshot[i]]['upid']==cdm_halos[snapshot[i]][0]['id']]
 
     #Load SIDM particle data at the final snapshot and the corresponding hlist
        f_sidm[snapshot[i]] = pynbody.load("/scratch/enadler/SIDM/558_vi/snapshot_" + snapshot[i])
-       sidm_halos[snapshot[i]] = readHlist('/scratch/enadler/SIDM/558_vi/rockstar/hlists/hlist_' + sidm_hlist[i] + '.list')
+       sidm_halos[snapshot[i]] = readHlist('/scratch/enadler/SIDM/558_vi/rockstar/hlists/hlist_' + sidm_hlist[num] + '.list')
        sidm_subhalos[snapshot[i]] = sidm_halos[snapshot[i]][sidm_halos[snapshot[i]]['upid']==sidm_halos[snapshot[i]][0]['id']]
