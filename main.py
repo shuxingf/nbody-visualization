@@ -8,8 +8,8 @@ cdm_subhalos = {}
 f_sidm = {}
 sidm_halos = {}
 sidm_subhalos = {}
-snapshot = ['234']
-#snapshot=["%03d" % x for x in range(10)]
+#snapshot = ['234']
+snapshot=["%03d" % x for x in range(220,234)]
 
 
 

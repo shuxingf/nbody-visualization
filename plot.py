@@ -44,7 +44,7 @@ def plot_snapshot(snapshot, f_short_cdm, cdm_halos, cdm_subhalos, f_short_sidm, 
         plt.tight_layout()
     
         print("save cdm_visualization" + snapshot[i])
-        plt.savefig("/home1/shuxingf/cdm_visualization/cdm_visualization" + snapshot[i] + ".png")
+        plt.savefig("/home1/shuxingf/nbody-visualization/cdm_visualization/cdm_visualization" + snapshot[i] + ".png")
 
         plt.figure(figsize=(12,12))
 
@@ -74,7 +74,7 @@ def plot_snapshot(snapshot, f_short_cdm, cdm_halos, cdm_subhalos, f_short_sidm, 
 
         plt.tight_layout()
         print("save sidm_visualization" + snapshot[i])
-        plt.savefig("/home1/shuxingf/sidm_visualization/sidm_visualization" + snapshot[i] + ".png")
+        plt.savefig("/home1/shuxingf/nbody-visualization/sidm_visualization/sidm_visualization" + snapshot[i] + ".png")
     return
     
     
