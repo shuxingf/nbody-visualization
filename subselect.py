@@ -13,10 +13,7 @@ from helpers.SimulationAnalysis import readHlist
 
 def subselect(cdm_halos, sidm_halos, f_cdm, f_short_cdm, f_sidm, f_short_sidm ):
    
-   # for i in range(236):
-       # assert(np.argmax(cdm_halos[snapshot[i]]['mvir'])==0)
-       # assert(np.argmax(sidm_halos[snapshot[i]]['Mvir'])==0)
-
+  
     distance_cut=100.
     projection_thickness=2.
     Mpc_to_kpc=1000.
