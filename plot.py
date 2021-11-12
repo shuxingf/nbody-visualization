@@ -11,7 +11,7 @@ import pynbody.plot.sph as sph
 #see https://bitbucket.org/yymao/helpers/src/master/ for installation
 from helpers.SimulationAnalysis import readHlist
 
-def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, MW_main, MW_main_vi):
+def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, MW_main, MW_main_vi, param):
     #snapshot=["%03d" % x for x in range(10)]
 
 
@@ -51,9 +51,13 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         plt.axis('off')
 
         plt.tight_layout()
-    
-        print("save cdm_visualization" + snapshot[i])
-        plt.savefig("/home1/shuxingf/nbody-visualization/cdm_visualization/cdm_visualization" + snapshot[i] + ".png")
+        
+        if(param == "MW"):
+            print("save cdm_visualization" + snapshot[i])
+            plt.savefig("/home1/shuxingf/nbody-visualization/cdm_visualization/cdm_visualization" + snapshot[i] + ".png")
+        if(param == "LMC"):
+            print("save cdm_visualization" + snapshot[i])
+            plt.savefig("/home1/shuxingf/nbody-visualization/cdm_visualization_lmc/cdm_visualization" + snapshot[i] + ".png")
 
         plt.figure(figsize=(12,12))
 
@@ -82,8 +86,12 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         plt.axis('off')
 
         plt.tight_layout()
-        print("save sidm_visualization" + snapshot[i])
-        plt.savefig("/home1/shuxingf/nbody-visualization/sidm_visualization/sidm_visualization" + snapshot[i] + ".png")
+        if(param == "MW"):
+            print("save sidm_visualization" + snapshot[i])
+            plt.savefig("/home1/shuxingf/nbody-visualization/sidm_visualization/cdm_visualization" + snapshot[i] + ".png")
+        if(param == "LMC"):
+            print("save cdm_visualization" + snapshot[i])
+            plt.savefig("/home1/shuxingf/nbody-visualization/sidm_visualization_lmc/cdm_visualization" + snapshot[i] + ".png")
        
     return
     
