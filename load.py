@@ -92,6 +92,6 @@ def load(snapshot, f_cdm, cdm_halos,  f_sidm, sidm_halos):
     #Load SIDM particle data at the final snapshot and the corresponding hlist
        f_sidm[snapshot[i]] = pynbody.load("/scratch/enadler/SIDM/558_vi/snapshot_" + snapshot[i])
        sidm_halos[snapshot[i]] = readHlist('/scratch/enadler/SIDM/558_vi/rockstar/hlists/hlist_' + sidm_hlist[num] + '.list')
-       
+  
 
     return LMC_main, LMC_main_vi, MW_main, MW_main_vi
