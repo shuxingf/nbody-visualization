@@ -94,12 +94,12 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         index = int(snapshot[i])
         scale = float(cdm_hlist[index])
         lmc_ind = np.argmin(np.abs(LMC_main['scale']-scale))
-        try:
+        #try:
 
-            mw = plt.scatter(MW_main[index]['x'], MW_main[index]['y'], 
-                 s=100, marker='*',label=r'$\mathrm{MW}$',color='gold')
-        except:
-            pass
+        #    mw = plt.scatter(MW_main[index]['x'], MW_main[index]['y'], 
+        #         s=100, marker='*',label=r'$\mathrm{MW}$',color='gold')
+        #except:
+        #    pass
         try:
             lmc = plt.scatter(LMC_main[lmc_ind]['x'], LMC_main[lmc_ind]['y'],
                   s=100,marker='*',label=r'$\mathrm{LMC}$',color='magenta')
@@ -111,7 +111,7 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
 
         plt.title(r'$\mathrm{CDM}$',fontsize=30)
         
-        plt.legend(loc=2,handles=[mw,lmc],fontsize=20,frameon=False)
+        plt.legend(loc=2,handles=[lmc],fontsize=20,frameon=False)
         
 
         plt.axis('off')
@@ -131,11 +131,11 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
 
         plt.scatter(f_short_sidm[snapshot[i]]['pos'][:,0],
             f_short_sidm[snapshot[i]]['pos'][:,1],s=0.01,alpha=0.1,c='k')
-        try:
-            mw = plt.scatter(MW_main_vi[index]['x'], MW_main_vi[index]['y'], 
-                 s=100, marker='*',label=r'$\mathrm{MW}$',color='gold')
-        except:
-            pass
+        #try:
+        #    mw = plt.scatter(MW_main_vi[index]['x'], MW_main_vi[index]['y'], 
+        #         s=100, marker='*',label=r'$\mathrm{MW}$',color='gold')
+        #except:
+        #    pass
         try:
             lmc = plt.scatter(LMC_main_vi[index]['x'], LMC_main_vi[index]['y'],
                  s=100,marker='*',label=r'$\mathrm{LMC}$',color='magenta')
@@ -146,7 +146,7 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         plt.gca().invert_yaxis()
 
         plt.title(r'$\mathrm{SIDM}$',color='dodgerblue',fontsize=30)
-        plt.legend(loc=2,handles=[mw,lmc],fontsize=20,frameon=False)
+        plt.legend(loc=2,handles=[lmc],fontsize=20,frameon=False)
        
 
         plt.axis('off')
