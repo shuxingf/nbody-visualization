@@ -91,7 +91,7 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         plt.scatter(f_short_cdm[snapshot[i]]['pos'][:,0],
                 f_short_cdm[snapshot[i]]['pos'][:,1],s=0.01,alpha=0.1,c='k')
 
-        index = int(snapshot[i])s
+        index = int(snapshot[i])
         scale = float(cdm_hlist[index])
         lmc_ind = np.argmin(np.abs(LMC_main['scale']-scale))
         try:
