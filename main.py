@@ -12,7 +12,7 @@ f_sidm = {}
 sidm_halos = {}
 
 #snapshot = ['235']
-snapshot=["%03d" % x for x in range(10,12)]
+snapshot=["%03d" % x for x in range(220,236)]
 
 
 #load
