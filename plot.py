@@ -86,7 +86,7 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         print("plotting i = " + snapshot[i])
         plt.figure(figsize=(12,12))
 
-        plt.subplot(111)
+        plt.subplot(111, facecolor = ('black'))
        
         
         plt.scatter(f_short_cdm[snapshot[i]]['pos'][:,0],
@@ -104,19 +104,21 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         #    pass
         try:
             lmc = plt.scatter(LMC_main[lmc_ind]['x'], LMC_main[lmc_ind]['y'],
-                  s=100,marker='*',label=r'$\mathrm{LMC}$',color='magenta')
+                  s=100,marker='*',label=r'$\mathrm{LMC}$',color='magenta',alpha = 0.5)
         except:
             pass
 
         plt.gca().invert_xaxis()
         plt.gca().invert_yaxis()
 
-        plt.title(r'$\mathrm{CDM}$',fontsize=30)
+        plt.title(r'$\mathrm{SIDM}$',color='k',fontsize=30)
+        legend = plt.legend(loc=2,handles=[lmc], fontsize=20,frameon=False)
+        plt.setp(legend.get_texts(), color='w')
         
-        plt.legend(loc=2,handles=[lmc],fontsize=20,frameon=False)
-        
-
-        plt.axis('off')
+        plt.axis('on')
+        ax = plt.gca()
+        ax.get_xaxis().set_visible(False)
+        ax.get_yaxis().set_visible(False)
 
         plt.tight_layout()
         
