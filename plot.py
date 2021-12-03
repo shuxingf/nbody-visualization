@@ -150,7 +150,8 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         plt.gca().invert_yaxis()
 
         plt.title(r'$\mathrm{SIDM}$',color='dodgerblue',fontsize=30)
-        plt.legend(loc=2,handles=[lmc], color = 'w', fontsize=20,frameon=False)
+        legend = plt.legend(loc=2,handles=[lmc], fontsize=20,frameon=False)
+        plt.setp(legend.get_texts(), color='w')
        
 
         plt.axis('on')
