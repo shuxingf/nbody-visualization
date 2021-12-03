@@ -87,7 +87,7 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         plt.figure(figsize=(12,12))
 
         plt.subplot(111)
-        ax = plt.axes()
+        ax = plt.gca()
         # Setting the background color
         ax.set_facecolor("black")
         
@@ -131,7 +131,7 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         plt.figure(figsize=(12,12))
 
         plt.subplot(111)
-        ax = plt.axes()
+        ax = plt.gca()
         # Setting the background color
         ax.set_facecolor("black")
 
