@@ -91,7 +91,7 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         
         plt.scatter(f_short_cdm[snapshot[i]]['pos'][:,0],
                 f_short_cdm[snapshot[i]]['pos'][:,1],s=0.01,alpha=0.1,c='dodgerblue')
-        ax = plt.gca()
+        ax = plt.axes()
         # Setting the background color
         ax.set_facecolor("pink")
         index = int(snapshot[i])
@@ -134,7 +134,7 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
        
         plt.scatter(f_short_sidm[snapshot[i]]['pos'][:,0],
             f_short_sidm[snapshot[i]]['pos'][:,1],s=0.01,alpha=0.1,c='dodgerblue')
-        ax = plt.gca()
+        ax = plt.axes()
         # Setting the background color
         ax.set_facecolor("pink")
         #try:
