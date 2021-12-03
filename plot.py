@@ -154,6 +154,9 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
        
 
         plt.axis('on')
+        ax = plt.gca()
+        ax.get_xaxis().set_visible(False)
+        ax.get_yaxis().set_visible(False)
 
         plt.tight_layout()
         if(param == "MW"):
