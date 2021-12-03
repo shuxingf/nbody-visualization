@@ -142,7 +142,7 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         #    pass
         try:
             lmc = plt.scatter(LMC_main_vi[index]['x'], LMC_main_vi[index]['y'],
-                 s=100,marker='*',label=r'$\mathrm{LMC}$',color='magenta')
+                 s=100,marker='*',label=r'$\mathrm{LMC}$',color='magenta', alpha = 0.1)
         except:
             pass
 
