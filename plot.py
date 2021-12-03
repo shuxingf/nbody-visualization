@@ -87,13 +87,13 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         plt.figure(figsize=(12,12))
 
         plt.subplot(111)
-        ax = plt.gca()
-        # Setting the background color
-        ax.set_facecolor("black")
+       
         
         plt.scatter(f_short_cdm[snapshot[i]]['pos'][:,0],
                 f_short_cdm[snapshot[i]]['pos'][:,1],s=0.01,alpha=0.1,c='dodgerblue')
-
+        ax = plt.gca()
+        # Setting the background color
+        ax.set_facecolor("pink")
         index = int(snapshot[i])
         scale = float(cdm_hlist[index])
         lmc_ind = np.argmin(np.abs(LMC_main['scale']-scale))
@@ -131,12 +131,12 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         plt.figure(figsize=(12,12))
 
         plt.subplot(111)
-        ax = plt.gca()
-        # Setting the background color
-        ax.set_facecolor("black")
-
+       
         plt.scatter(f_short_sidm[snapshot[i]]['pos'][:,0],
             f_short_sidm[snapshot[i]]['pos'][:,1],s=0.01,alpha=0.1,c='dodgerblue')
+        ax = plt.gca()
+        # Setting the background color
+        ax.set_facecolor("pink")
         #try:
         #    mw = plt.scatter(MW_main_vi[index]['x'], MW_main_vi[index]['y'], 
         #         s=100, marker='*',label=r'$\mathrm{MW}$',color='gold')
