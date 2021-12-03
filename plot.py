@@ -87,6 +87,9 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         plt.figure(figsize=(12,12))
 
         plt.subplot(111)
+        ax = plt.axes()
+        # Setting the background color
+        ax.set_facecolor("black")
         
         plt.scatter(f_short_cdm[snapshot[i]]['pos'][:,0],
                 f_short_cdm[snapshot[i]]['pos'][:,1],s=0.01,alpha=0.1,c='dodgerblue')
@@ -128,6 +131,9 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         plt.figure(figsize=(12,12))
 
         plt.subplot(111)
+        ax = plt.axes()
+        # Setting the background color
+        ax.set_facecolor("black")
 
         plt.scatter(f_short_sidm[snapshot[i]]['pos'][:,0],
             f_short_sidm[snapshot[i]]['pos'][:,1],s=0.01,alpha=0.1,c='dodgerblue')
