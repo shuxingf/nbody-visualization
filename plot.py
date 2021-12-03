@@ -132,7 +132,7 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         plt.subplot(111, facecolor = "black")
        
         plt.scatter(f_short_sidm[snapshot[i]]['pos'][:,0],
-            f_short_sidm[snapshot[i]]['pos'][:,1],s=0.01,alpha=0.1,c='dodgerblue')
+            f_short_sidm[snapshot[i]]['pos'][:,1],s=0.01,alpha=0.1,c='k')
         
         #try:
         #    mw = plt.scatter(MW_main_vi[index]['x'], MW_main_vi[index]['y'], 
