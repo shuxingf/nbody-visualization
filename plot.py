@@ -122,21 +122,15 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
 
         plt.tight_layout()
         
-        if(param == "MW"):
-            print("save cdm_visualization" + snapshot[i])
-            plt.savefig("/home1/shuxingf/nbody-visualization/cdm_visualization/cdm_visualization" + snapshot[i] + ".png")
-        if(param == "LMC"):
             print("save cdm_visualization" + snapshot[i])
             plt.savefig("/home1/shuxingf/nbody-visualization/cdm_visualization_lmc/cdm_visualization" + snapshot[i] + ".png")
 
         plt.figure(figsize=(12,12))
 
-        plt.subplot(111, facecolor = ('black'))
-       
+        plt.subplot(111)
+
         plt.scatter(f_short_sidm[snapshot[i]]['pos'][:,0],
-            f_short_sidm[snapshot[i]]['pos'][:,1],s=0.01,alpha=0.1,c='dodgerblue')
-        
-        
+            f_short_sidm[snapshot[i]]['pos'][:,1],s=0.01,alpha=0.1,c='k')
         #try:
         #    mw = plt.scatter(MW_main_vi[index]['x'], MW_main_vi[index]['y'], 
         #         s=100, marker='*',label=r'$\mathrm{MW}$',color='gold')
@@ -144,22 +138,18 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         #    pass
         try:
             lmc = plt.scatter(LMC_main_vi[index]['x'], LMC_main_vi[index]['y'],
-                 s=100,marker='*',label=r'$\mathrm{LMC}$',color='magenta', alpha = 0.5)
+                 s=100,marker='*',label=r'$\mathrm{LMC}$',color='magenta')
         except:
             pass
 
         plt.gca().invert_xaxis()
         plt.gca().invert_yaxis()
 
-        plt.title(r'$\mathrm{SIDM}$',color='k',fontsize=30)
-        legend = plt.legend(loc=2,handles=[lmc], fontsize=20,frameon=False)
-        plt.setp(legend.get_texts(), color='w')
+        plt.title(r'$\mathrm{SIDM}$',color='dodgerblue',fontsize=30)
+        plt.legend(loc=2,handles=[lmc],fontsize=20,frameon=False)
        
 
-        plt.axis('on')
-        ax = plt.gca()
-        ax.get_xaxis().set_visible(False)
-        ax.get_yaxis().set_visible(False)
+        plt.axis('off')
 
         plt.tight_layout()
         if(param == "MW"):
