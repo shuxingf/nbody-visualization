@@ -90,13 +90,15 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
 
 
         plt.scatter(f_short_cdm[snapshot[i]]['pos'][:,0],
-                f_short_cdm[snapshot[i]]['pos'][:,1],s=0.01,alpha=0.1,c='dodgerblue')
+                f_short_cdm[snapshot[i]]['pos'][:,1],s=0.01,alpha=1,c='dodgerblue')
 
 
         index = int(snapshot[i])
         redshift = str(1./float(cdm_hlist[index]) - 1.)
         scale = float(cdm_hlist[index])
         lmc_ind = np.argmin(np.abs(LMC_main['scale']-scale))
+        falpha = 0
+        if( )
         #try:
 
         #    mw = plt.scatter(MW_main[index]['x'], MW_main[index]['y'], 
@@ -135,7 +137,7 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         plt.subplot(111, facecolor = ('black'))
 
         plt.scatter(f_short_sidm[snapshot[i]]['pos'][:,0],
-            f_short_sidm[snapshot[i]]['pos'][:,1],s=0.01,alpha=0.1,c='dodgerblue')
+            f_short_sidm[snapshot[i]]['pos'][:,1],s=0.01,alpha=1,c='dodgerblue')
 
 
         redshift = str(1./float(sidm_hlist[index]) - 1.)
