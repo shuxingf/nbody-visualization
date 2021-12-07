@@ -112,7 +112,7 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         plt.gca().invert_xaxis()
         plt.gca().invert_yaxis()
 
-        plt.title('CDM (z = ' +redshift + ')' ,color='k',fontsize=30)
+        plt.title(r'$\mathrm{CDM}$' + ' (z = ' +redshift + ')',color='k',fontsize=30)
         legend = plt.legend(loc=2,handles=[lmc], fontsize=20,frameon=False)
         plt.setp(legend.get_texts(), color='w')
 
@@ -138,6 +138,10 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
             f_short_sidm[snapshot[i]]['pos'][:,1],s=0.01,alpha=0.1,c='dodgerblue')
 
 
+        redshift = str(1./float(sidm_hlist[index]) - 1.)
+      
+
+
         #try:
         #    mw = plt.scatter(MW_main_vi[index]['x'], MW_main_vi[index]['y'], 
         #         s=100, marker='*',label=r'$\mathrm{MW}$',color='gold')
@@ -152,7 +156,7 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         plt.gca().invert_xaxis()
         plt.gca().invert_yaxis()
 
-        plt.title(r'$\mathrm{SIDM}$',color='k',fontsize=30)
+        plt.title(r'$\mathrm{SIDM}$' + ' (z = ' +redshift + ')',color='k',fontsize=30)
         legend = plt.legend(loc=2,handles=[lmc], fontsize=20,frameon=False)
         plt.setp(legend.get_texts(), color='w')
 
@@ -168,6 +172,6 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
             plt.savefig("/home1/shuxingf/nbody-visualization/sidm_visualization/sidm_visualization" + snapshot[i] + ".png")
         if(param == "LMC"):
             print("save sidm_visualization" + snapshot[i])
-            plt.savefig("/home1/shuxingf/nbody-visualization/sidm_visualization_lmc/sidm_visualization" + snapshot[i] + ".png")
+            plt.savefig("/home1/shuxingf/nbody-visualization/test/sidm_visualization" + snapshot[i] + ".png")
 
     return
