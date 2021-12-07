@@ -94,7 +94,7 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
 
 
         index = int(snapshot[i])
-        redshift = 1/cdm_hlist[index] - 1
+        redshift = str(1./float(cdm_hlist[index]) - 1.)
         scale = float(cdm_hlist[index])
         lmc_ind = np.argmin(np.abs(LMC_main['scale']-scale))
         #try:
