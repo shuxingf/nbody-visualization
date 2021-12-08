@@ -116,7 +116,7 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         plt.gca().invert_xaxis()
         plt.gca().invert_yaxis()
 
-        plt.title(r'$\mathrm{CDM}$' + ' (z = ' +redshift + ')',color='k',fontsize=30)
+        plt.title(r'$\mathrm{CDM}$' + ' (z = ' +str(redshift) + ')',color='k',fontsize=30)
         legend = plt.legend(loc=2,handles=[lmc], fontsize=20,frameon=False)
         plt.setp(legend.get_texts(), color='w')
 
@@ -160,7 +160,7 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         plt.gca().invert_xaxis()
         plt.gca().invert_yaxis()
 
-        plt.title(r'$\mathrm{SIDM}$' + ' (z = ' +redshift + ')',color='k',fontsize=30)
+        plt.title(r'$\mathrm{SIDM}$' + ' (z = ' +str(redshift) + ')',color='k',fontsize=30)
         legend = plt.legend(loc=2,handles=[lmc], fontsize=20,frameon=False)
         plt.setp(legend.get_texts(), color='w')
 
