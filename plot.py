@@ -73,6 +73,14 @@ sidm_hlist = ['0.05000', '0.05064', '0.05129', '0.05195', '0.05262', '0.05329', 
        '0.86916', '0.88031', '0.89161', '0.90305', '0.91463', '0.92637', '0.93825', '0.95029',
        '0.96248', '0.97483', '0.98733', '1.00000']
 
+def truncate(f, n):
+    '''Truncates/pads a float f to n decimal places without rounding'''
+    s = '{}'.format(f)
+    if 'e' in s or 'E' in s:
+        return '{0:.{1}f}'.format(f, n)
+    i, p, d = s.partition('.')
+    return '.'.join([i, (d+'0'*n)[:n]])
+
 def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, MW_main, MW_main_vi, param):
     #snapshot=["%03d" % x for x in range(10)]
 
@@ -86,7 +94,6 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         print("plotting i = " + snapshot[i])
         index = int(snapshot[i])
         redshift = 1./float(cdm_hlist[index]) - 1.
-        redshift = int(redshift * 10**2)/10.0**2
         scale = float(cdm_hlist[index])
         lmc_ind = np.argmin(np.abs(LMC_main['scale']-scale))
         falpha = 1. - (index - 10)*(0.9/225.0)
@@ -116,7 +123,7 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         plt.gca().invert_xaxis()
         plt.gca().invert_yaxis()
 
-        plt.title(r'$\mathrm{CDM}$' + ' (z = ' +str(redshift) + ')',color='k',fontsize=30)
+        plt.title(r'$\mathrm{CDM}$' + ' (z = ' + truncate(redshift,2) + ')',color='k',fontsize=30)
         legend = plt.legend(loc=2,handles=[lmc], fontsize=20,frameon=False)
         plt.setp(legend.get_texts(), color='w')
 
@@ -143,7 +150,7 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
 
 
         redshift = str(1./float(sidm_hlist[index]) - 1.)
-        redshift = int(redshift * 10**2)/10.0**2
+        
 
 
         #try:
@@ -160,7 +167,7 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         plt.gca().invert_xaxis()
         plt.gca().invert_yaxis()
 
-        plt.title(r'$\mathrm{SIDM}$' + ' (z = ' +str(redshift) + ')',color='k',fontsize=30)
+        plt.title(r'$\mathrm{SIDM}$' + ' (z = ' +truncate(redshift,2) + ')',color='k',fontsize=30)
         legend = plt.legend(loc=2,handles=[lmc], fontsize=20,frameon=False)
         plt.setp(legend.get_texts(), color='w')
 
