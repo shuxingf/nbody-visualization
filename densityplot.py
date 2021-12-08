@@ -123,5 +123,3 @@ def plot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, f_cdm, f_
 
             
   #solar masses/ 
-
-
