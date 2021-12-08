@@ -30,4 +30,4 @@ if(param == "LMC"):
     subselect2.subselect(f_cdm, f_short_cdm, f_sidm, f_short_sidm ,LMC_main, LMC_main_vi)
 
 #plot
-#plot.plot_snapshot(snapshot, f_short_cdm, f_short_sidm, LMC_main, LMC_main_vi, MW_main, MW_main_vi, param)
+plot.plot_snapshot(snapshot, f_short_cdm, f_short_sidm, LMC_main, LMC_main_vi, MW_main, MW_main_vi, param)

@@ -85,7 +85,8 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
     for i in range(len(snapshot)):
         print("plotting i = " + snapshot[i])
         index = int(snapshot[i])
-        redshift = str(1./float(cdm_hlist[index]) - 1.)
+        redshift = 1./float(cdm_hlist[index]) - 1.
+        redshift = str(redshift - redshift % 0.01)
         scale = float(cdm_hlist[index])
         lmc_ind = np.argmin(np.abs(LMC_main['scale']-scale))
         falpha = 1. - (index - 10)*(0.9/225.0)
