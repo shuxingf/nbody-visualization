@@ -105,8 +105,7 @@ def plot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, f_cdm, f_
     
     for key in f_cdm.keys():
         print("subselecting " + key + " for cdm")
-        mass = f_cdm[key]['mass']
-        print(mass)
+       
         scale = float(cdm_hlist[int(key)])
         lmc_ind = np.argmin(np.abs(LMC_main['scale']-scale))
         xdist = f_cdm[key]['pos'][:,0]- LMC_main[lmc_ind]['x']
@@ -116,6 +115,7 @@ def plot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, f_cdm, f_
         f_short_cdm[key] = f_cdm[key][(dist<distance_cut) & (np.abs(zdist)<projection_thickness)]
         for i,r in enumerate(r_bins):
             particles = len(f_cdm[key]['pos'][:,0][(dist<r)])
+            print(particles)
             density = particles/(4/3 * 3.1415926 * r**2)
             rho_enclosed[i] = particles/density
         plt.loglog(r_bins,rho_enclosed)
