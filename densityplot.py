@@ -85,7 +85,8 @@ sidm_hlist = ['0.05000', '0.05064', '0.05129', '0.05195', '0.05262', '0.05329', 
 
 def plot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, f_cdm, f_sidm):
     r_bins = np.linspace(10.,100.,10)
-    rho_enclosed = np.zeros(len(r_bins))
+    rho_enclosed_cdm = np.zeros(len(r_bins))
+    rho_enclosed_sidm = np.zeros(len(r_bins))
 
     distance_cut=100.
     projection_thickness=2.
@@ -112,13 +113,30 @@ def plot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, f_cdm, f_
         ydist = f_cdm[key]['pos'][:,1]- LMC_main[lmc_ind]['y']
         zdist = f_cdm[key]['pos'][:,2]- LMC_main[lmc_ind]['z']
         dist = Mpc_to_kpc*np.sqrt(xdist**2+ydist**2+zdist**2)/f_cdm[key].properties['h']
-       
+        
+        mass_sidm = np.min(f_sidm[key]['mass'][:])
+        scale = float(sidm_hlist[int(key)])
+        lmc_ind = np.argmin(np.abs(LMC_main_vi['scale']-scale))
+        xdist = f_sidm[key]['pos'][:,0]- LMC_main_vi[lmc_ind]['x']
+        ydist = f_sidm[key]['pos'][:,1]- LMC_main_vi[lmc_ind]['y']
+        zdist = f_sidm[key]['pos'][:,2]- LMC_main_vi[lmc_ind]['z']
+        dist_sidm = Mpc_to_kpc*np.sqrt(xdist**2+ydist**2+zdist**2)/f_sidm[key].properties['h']
         for i,r in enumerate(r_bins):
             particles = len(f_cdm[key]['pos'][:,0][(dist<r)])
             total_mass = mass * particles
             volume = 4/3 * 3.1415926 * r**3
-            rho_enclosed[i] = total_mass/volume
-        plt.loglog(r_bins,rho_enclosed)
+            rho_enclosed_cdm[i] = total_mass/volume
+
+            particles = len(f_sidm[key]['pos'][:,0][(dist_sidm<r)])
+            total_mass = mass * particles
+            volume = 4/3 * 3.1415926 * r**3
+            rho_enclosed_sidm[i] = total_mass/volume
+
+        plt.subplot(121)
+        plt.loglog(r_bins,rho_enclosed_cdm)
+        plt.subplot(122)
+        plt.loglog(r_bins,rho_enclosed_sidm)
+
         plt.savefig("/home1/shuxingf/nbody-visualization/density/cdm_density" + key + ".png")
 
    
