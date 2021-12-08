@@ -99,7 +99,7 @@ def plot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, f_cdm, f_
 
     dist = {}
     f_short_cdm ={}
-    PI = mathh.pi()
+    PI = math.pi()
     
     
     for key in f_cdm.keys():
