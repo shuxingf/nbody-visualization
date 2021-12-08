@@ -116,7 +116,7 @@ def plot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, f_cdm, f_
         for i,r in enumerate(r_bins):
             particles = len(f_cdm[key]['pos'][:,0][(dist<r)])
             total_mass = mass * particles
-            print("cdm tm is " + total_mass)
+            print("cdm tm is ", total_mass)
             volume = 4/3 * 3.1415926 * r**3
             rho_enclosed_cdm[i] = total_mass/volume
 
@@ -131,7 +131,7 @@ def plot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, f_cdm, f_
         for i,r in enumerate(r_bins):
             particles = len(f_sidm[key]['pos'][:,0][(dist<r)])
             total_mass = mass * particles
-            print("sidm tm is " + total_mass)
+            print("sidm tm is ",  total_mass)
             volume = 4/3 * 3.1415926 * r**3
             rho_enclosed_sidm[i] = total_mass/volume
 
