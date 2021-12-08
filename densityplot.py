@@ -90,6 +90,7 @@ def plot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, f_cdm, f_
     distance_cut=100.
     projection_thickness=2.
     Mpc_to_kpc=1000.
+    mass = f_cdm[]
 
     LMC_main = LMC_main[::-1]
     LMC_main_vi = LMC_main_vi[::-1]
@@ -104,6 +105,8 @@ def plot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, f_cdm, f_
     
     for key in f_cdm.keys():
         print("subselecting " + key + " for cdm")
+        mass = f_cdm[key]['mass']
+        print(mass)
         scale = float(cdm_hlist[int(key)])
         lmc_ind = np.argmin(np.abs(LMC_main['scale']-scale))
         xdist = f_cdm[key]['pos'][:,0]- LMC_main[lmc_ind]['x']
