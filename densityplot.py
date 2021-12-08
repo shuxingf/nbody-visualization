@@ -108,8 +108,10 @@ def plot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, f_cdm, f_
         xdist = f_cdm[key]['pos'][:,0]- LMC_main[lmc_ind]['x']
         ydist = f_cdm[key]['pos'][:,1]- LMC_main[lmc_ind]['y']
         zdist = f_cdm[key]['pos'][:,2]- LMC_main[lmc_ind]['z']
-        dist[key] = Mpc_to_kpc*np.sqrt(xdist**2+ydist**2+zdist**2)/f_cdm[key].properties['h']
+        dist = Mpc_to_kpc*np.sqrt(xdist**2+ydist**2+zdist**2)/f_cdm[key].properties['h']
         f_short_cdm[key] = f_cdm[key][(dist<distance_cut) & (np.abs(zdist)<projection_thickness)]
+
+   
 
 
 
