@@ -99,6 +99,7 @@ def plot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, f_cdm, f_
 
     dist = {}
     f_short_cdm ={}
+    PI = mathh.pi()
     
     
     for key in f_cdm.keys():
@@ -112,7 +113,7 @@ def plot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, f_cdm, f_
         f_short_cdm[key] = f_cdm[key][(dist<distance_cut) & (np.abs(zdist)<projection_thickness)]
         for i,r in enumerate(r_bins):
             particles = len(f_cdm[key]['pos'][:,0][(dist<r)])
-            density = particles/(4/3 * math.pi() * r**2)
+            density = particles/(4/3 * PI * r**2)
             rho_enclosed[i] = particles/density
         plt.loglog(r_bins,rho_enclosed)
         plt.savefig("/home1/shuxingf/nbody-visualization/density/cdm_density" + key + ".png")
