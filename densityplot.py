@@ -110,18 +110,19 @@ def plot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, f_cdm, f_
         zdist = f_cdm[key]['pos'][:,2]- LMC_main[lmc_ind]['z']
         dist = Mpc_to_kpc*np.sqrt(xdist**2+ydist**2+zdist**2)/f_cdm[key].properties['h']
         f_short_cdm[key] = f_cdm[key][(dist<distance_cut) & (np.abs(zdist)<projection_thickness)]
-
-   
-
-
-
-    for key in f_short_cdm.keys():
         for i,r in enumerate(r_bins):
             particles = len(f_short_cdm[key]['pos'][:,0][(dist<r)])
             density = particles/(4/3 * math.pi() * r**2)
             rho_enclosed[i] = particles/density
         plt.loglog(r_bins,rho_enclosed)
         plt.savefig("/home1/shuxingf/nbody-visualization/density/cdm_density" + key + ".png")
+
+   
+
+
+
+ 
+       
 
             
   #solar masses/ 
