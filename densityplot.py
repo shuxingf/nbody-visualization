@@ -116,8 +116,8 @@ def plot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, f_cdm, f_
         for i,r in enumerate(r_bins):
             particles = len(f_cdm[key]['pos'][:,0][(dist<r)])
             total_mass = mass * particles
-            volume = total_mass/(4/3 * 3.1415926 * r**3)
-            rho_enclosed[i] = particles/volume
+            volume = 4/3 * 3.1415926 * r**3
+            rho_enclosed[i] = total_mass/volume
         plt.loglog(r_bins,rho_enclosed)
         plt.savefig("/home1/shuxingf/nbody-visualization/density/cdm_density" + key + ".png")
 
