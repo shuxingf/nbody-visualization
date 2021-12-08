@@ -117,7 +117,7 @@ def plot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, f_cdm, f_
 
     for key in f_short_cdm.keys():
         for i,r in enumerate(r_bins):
-            particles = len(f_short_cdm[key][dist < r])
+            particles = len(f_short_cdm[key][(dist < r)])
             density = particles/(4/3 * math.pi() * r^2)
             rho_enclosed[i] = particles/density
         plt.loglog(r_bins,rho_enclosed)
