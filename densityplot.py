@@ -105,19 +105,19 @@ def plot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, f_cdm, f_
     
     for key in f_cdm.keys():
         print("subselecting " + key + " for cdm")
-       
+        mass = np.min(f_cdm[key]['mass'][:])
         scale = float(cdm_hlist[int(key)])
         lmc_ind = np.argmin(np.abs(LMC_main['scale']-scale))
         xdist = f_cdm[key]['pos'][:,0]- LMC_main[lmc_ind]['x']
         ydist = f_cdm[key]['pos'][:,1]- LMC_main[lmc_ind]['y']
         zdist = f_cdm[key]['pos'][:,2]- LMC_main[lmc_ind]['z']
         dist = Mpc_to_kpc*np.sqrt(xdist**2+ydist**2+zdist**2)/f_cdm[key].properties['h']
-        f_short_cdm[key] = f_cdm[key][(dist<distance_cut) & (np.abs(zdist)<projection_thickness)]
+       
         for i,r in enumerate(r_bins):
             particles = len(f_cdm[key]['pos'][:,0][(dist<r)])
-            print(particles)
-            density = particles/(4/3 * 3.1415926 * r**2)
-            rho_enclosed[i] = particles/density
+            total_mass = mass * particles
+            volume = total_mass/(4/3 * 3.1415926 * r**2)
+            rho_enclosed[i] = particles/volume
         plt.loglog(r_bins,rho_enclosed)
         plt.savefig("/home1/shuxingf/nbody-visualization/density/cdm_density" + key + ".png")
 
