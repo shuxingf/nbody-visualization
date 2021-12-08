@@ -84,7 +84,7 @@ sidm_hlist = ['0.05000', '0.05064', '0.05129', '0.05195', '0.05262', '0.05329', 
 #    rho_enclosed[i] = enclosed mass divided by volume
 
 def plot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, f_cdm, f_sidm):
-    r_bins = np.linspace(10,100,10)
+    r_bins = np.linspace(10.,100.,10)
     rho_enclosed = np.zeros(len(r_bins))
 
     distance_cut=100.
