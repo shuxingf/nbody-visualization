@@ -11,9 +11,8 @@ f_cdm = {}
 cdm_halos = {}
 f_sidm = {}
 sidm_halos = {}
-
-#snapshot = ['235']
-snapshot=["%03d" % x for x in range(10,20)]
+snapshot = ['235']
+#snapshot=["%03d" % x for x in range(10,20)]
 
 #load
 LMC_main, LMC_main_vi, MW_main, MW_main_vi = load.load(snapshot,f_cdm, cdm_halos,f_sidm, sidm_halos)
