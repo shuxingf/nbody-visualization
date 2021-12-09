@@ -76,7 +76,13 @@ sidm_hlist = ['0.05000', '0.05064', '0.05129', '0.05195', '0.05262', '0.05329', 
        '0.86916', '0.88031', '0.89161', '0.90305', '0.91463', '0.92637', '0.93825', '0.95029',
        '0.96248', '0.97483', '0.98733', '1.00000']
 
-
+def truncate(f, n):
+    '''Truncates/pads a float f to n decimal places without rounding'''
+    s = '{}'.format(f)
+    if 'e' in s or 'E' in s:
+        return '{0:.{1}f}'.format(f, n)
+    i, p, d = s.partition('.')
+    return '.'.join([i, (d+'0'*n)[:n]])
 
 #for i,r in enumerate(r_bins):
 #    find total number of particles in subselected array with distance < r
@@ -134,13 +140,20 @@ def plot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, f_cdm, f_
             print("sidm tm is ",  total_mass)
             volume = 4/3 * 3.1415926 * r**3
             rho_enclosed_sidm[i] = total_mass/volume
-
+        redshift_cdm = str(1./float(cdm_hlist[index]) - 1.)
+        redshift_sidm = str(1./float(sidm_hlist[index]) - 1.)
         plt.subplot(121)
         plt.loglog(r_bins,rho_enclosed_cdm)
+        plt.xlabel("distance from LMC(kpc)")
+        plt.ylabel("density(solarmass/kpc^3)")
+        plt.title("cdm z = " + truncate(redshift_cdm,2))
         plt.subplot(122)
         plt.loglog(r_bins,rho_enclosed_sidm)
+        plt.xlabel("distance from LMC(kpc)")
+        plt.ylabel("density(solarmass/kpc^3)")
+        plt.title("sidm z = " + truncate(redshift_sidm,2))
 
-        plt.savefig("/home1/shuxingf/nbody-visualization/density/cdm_density" + key + ".png")
+        plt.savefig("/home1/shuxingf/nbody-visualization/density/density" + key + ".png")
 
    
 
@@ -150,4 +163,3 @@ def plot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, f_cdm, f_
        
 
             
-  #solar masses/ 
