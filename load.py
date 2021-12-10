@@ -25,7 +25,7 @@ cdm_snapshot_path = "/scratch/enadler/SIDM/Halo558/output"
 cdm_hlist_path = '/scratch/enadler/SIDM/Halo558/rockstar/hlists'
 #path to sidm snapshot folder
 sidm_snapshot_path ="/scratch/enadler/SIDM/558_vi"
-#path to sidm snapshot folder
+#path to sidm hlist folder
 sidm_hlist_path = "/scratch/enadler/SIDM/558_vi/rockstar/hlists"
 
 
