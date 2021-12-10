@@ -7,6 +7,7 @@ How to run
    If you only want to generage an image for a specific snapshot, just add the single snapshot number after LMC or MW, for example
      "python main.py LMC 100"
 
+The range of shnapshot numner is [10,235]
 Due to the large amount of memory it consumes, it is not recommended to generate too many images at one go. 
 
 Links to sample images and movies can be found in the folder "links"
