@@ -11,6 +11,25 @@ import pynbody.plot.sph as sph
 #see https://bitbucket.org/yymao/helpers/src/master/ for installation
 from helpers.SimulationAnalysis import readHlist
 
+#path to LMC main branch
+LMC_main_path = "/scratch/enadler/SIDM/LMC_main_branch.npy"
+#path tp LMC main branch vi
+LMC_main_vi_path = "/scratch/enadler/SIDM/LMC_main_branch_vi.npy"
+#path to MW main branch
+MC_main_path = "/scratch/enadler/SIDM/MW_main_branch.npy"
+#path to MW mian branch vi
+MC_main_vi_path = "/scratch/enadler/SIDM/MW_main_branch_vi.npy"
+#path to cdm snapshot folder
+cdm_snapshot_path = "/scratch/enadler/SIDM/Halo558/output"
+#path to cdm hlist folder
+cdm_hlist_path = '/scratch/enadler/SIDM/Halo558/rockstar/hlists'
+#path to sidm snapshot folder
+sidm_snapshot_path ="/scratch/enadler/SIDM/558_vi"
+#path to sidm snapshot folder
+sidm_hlist_path = "/scratch/enadler/SIDM/558_vi/rockstar/hlists"
+
+
+
 cdm_hlist = ['0.05000', '0.05060', '0.05130', '0.05190', '0.05260', '0.05330', '0.05400', '0.05470',
        '0.05540', '0.05610', '0.05680', '0.05750', '0.05830', '0.05900', '0.05980', '0.06050',
        '0.06130', '0.06210', '0.06290', '0.06370', '0.06450', '0.06530', '0.06620', '0.06700',
@@ -76,22 +95,22 @@ sidm_hlist = ['0.05000', '0.05064', '0.05129', '0.05195', '0.05262', '0.05329', 
 def load(snapshot, f_cdm, cdm_halos,  f_sidm, sidm_halos):
     
 
-    LMC_main =  np.load("/scratch/enadler/SIDM/LMC_main_branch.npy")
-    LMC_main_vi =np.load("/scratch/enadler/SIDM/LMC_main_branch_vi.npy")
-    MW_main = np.load("/scratch/enadler/SIDM/MW_main_branch.npy")
-    MW_main_vi = np.load("/scratch/enadler/SIDM/MW_main_branch_vi.npy")
+    LMC_main =  np.load(LMC_main_path)
+    LMC_main_vi =np.load(LMC_main_vi_path)
+    MW_main = np.load(MC_main_path)
+    MW_main_vi = np.load(MC_main_vi_path)
     for i in range(len(snapshot)):
-       print("loading i = " + snapshot[i])
-    #Load CDM particle data at the final snapshot and corresponding halo list ("hlist")
+       print("loading snapshot " + snapshot[i])
+    #Load CDM particle data and corresponding halo list ("hlist")
     
-       f_cdm[snapshot[i]] = pynbody.load("/scratch/enadler/SIDM/Halo558/output/snapshot_" + snapshot[i])
+       f_cdm[snapshot[i]] = pynbody.load(cdm_snapshot_path + "/snapshot_" + snapshot[i])
        num = int(snapshot[i])
-       cdm_halos[snapshot[i]] = readHlist('/scratch/enadler/SIDM/Halo558/rockstar/hlists/hlist_' + cdm_hlist[num] + '.list')
+       cdm_halos[snapshot[i]] = readHlist(cdm_hlist_path+ '/hlist_' + cdm_hlist[num] + '.list')
        
 
-    #Load SIDM particle data at the final snapshot and the corresponding hlist
-       f_sidm[snapshot[i]] = pynbody.load("/scratch/enadler/SIDM/558_vi/snapshot_" + snapshot[i])
-       sidm_halos[snapshot[i]] = readHlist('/scratch/enadler/SIDM/558_vi/rockstar/hlists/hlist_' + sidm_hlist[num] + '.list')
+    #Load SIDM particle data and the corresponding hlist
+       f_sidm[snapshot[i]] = pynbody.load(sidm_snapshot_path+ "/snapshot_" + snapshot[i])
+       sidm_halos[snapshot[i]] = readHlist(sidm_hlist_path +'/hlist_' + sidm_hlist[num] + '.list')
   
 
     return LMC_main, LMC_main_vi, MW_main, MW_main_vi
