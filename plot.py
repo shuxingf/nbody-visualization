@@ -11,6 +11,15 @@ import pynbody.plot.sph as sph
 #see https://bitbucket.org/yymao/helpers/src/master/ for installation
 from helpers.SimulationAnalysis import readHlist
 
+#path to the folder to store cdm images centered on MW
+cdm_MW_path = "/home1/shuxingf/nbody-visualization/test/cdm_MW"
+#path to the folder to store cdm images centered on LMC
+cdm_LMC_path = "/home1/shuxingf/nbody-visualization/test/cdm_LMC"
+#path to the folder to store cdm images centered on MW
+sidm_MW_path = "/home1/shuxingf/nbody-visualization/test/sidm_MW"
+#path to the folder to store sidm images centered on LMC
+sidm_LMC_path = "/home1/shuxingf/nbody-visualization/test/sidm_LMC"
+
 cdm_hlist = ['0.05000', '0.05060', '0.05130', '0.05190', '0.05260', '0.05330', '0.05400', '0.05470',
        '0.05540', '0.05610', '0.05680', '0.05750', '0.05830', '0.05900', '0.05980', '0.06050',
        '0.06130', '0.06210', '0.06290', '0.06370', '0.06450', '0.06530', '0.06620', '0.06700',
@@ -82,20 +91,21 @@ def truncate(f, n):
     return '.'.join([i, (d+'0'*n)[:n]])
 
 def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, MW_main, MW_main_vi, param):
-    #snapshot=["%03d" % x for x in range(10)]
-
-
+   
     LMC_main = LMC_main[::-1]
     LMC_main_vi = LMC_main_vi[::-1]
     MW_main = MW_main[::-1]
     MW_main_vi = MW_main_vi[::-1]
 
     for i in range(len(snapshot)):
-        print("plotting i = " + snapshot[i])
+        print("plotting snapshot = " + snapshot[i])
+
+        #plotting images with cdm model
         index = int(snapshot[i])
         redshift = 1./float(cdm_hlist[index]) - 1.
         scale = float(cdm_hlist[index])
         lmc_ind = np.argmin(np.abs(LMC_main['scale']-scale))
+        #a function that change the alpha value of particles overtime
         falpha = 1. - (index - 10)*(0.9/225.0)
         plt.figure(figsize=(12,12))
 
@@ -139,12 +149,14 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         plt.tight_layout()
 
         if(param == "MW"):
-            print("save cdm_visualization" + snapshot[i])
-            plt.savefig("/home1/shuxingf/nbody-visualization/test/cdm_MW" + snapshot[i] + ".png")
+            print("saving cdm_MW" + snapshot[i])
+            plt.savefig( cdm_MW_path + snapshot[i] + ".png")
         if(param == "LMC"):
-            print("save cdm_visualization" + snapshot[i])
-            plt.savefig("/home1/shuxingf/nbody-visualization/test/cdm_LMC" + snapshot[i] + ".png")
+            print("saving cdm_LMC" + snapshot[i])
+            plt.savefig( cdm_LMC_path + snapshot[i] + ".png")
 
+
+        #plotting images with side model
         plt.figure(figsize=(12,12))
 
         plt.subplot(111, facecolor = ('black'))
@@ -187,10 +199,10 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
 
         plt.tight_layout()
         if(param == "MW"):
-            print("save sidm_visualization" + snapshot[i])
-            plt.savefig("/home1/shuxingf/nbody-visualization/test/sidm_MW" + snapshot[i] + ".png")
+            print("saving sidm_MW" + snapshot[i])
+            plt.savefig( sidm_MW_path + snapshot[i] + ".png")
         if(param == "LMC"):
-            print("save sidm_visualization" + snapshot[i])
-            plt.savefig("/home1/shuxingf/nbody-visualization/test/sidm_LMC" + snapshot[i] + ".png")
+            print("saving sidm_LMC" + snapshot[i])
+            plt.savefig( sidm_LMC_path + snapshot[i] + ".png")
 
     return
