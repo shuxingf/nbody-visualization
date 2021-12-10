@@ -8,10 +8,10 @@ How to run
     "python main.py MW 200 210" will generate images centered on MW using snapshots from number 200 to number 210.
 
    If you only want to generage an image for a specific snapshot, just add the single snapshot number after LMC or MW, for example
-   
+
      "python main.py LMC 100"
 
-The range of shnapshot numner is [10,235]
+The range of shnapshot number is [10,235]
 
 Due to the large amount of memory it consumes, it is not recommended to generate too many images at one go. 
 
