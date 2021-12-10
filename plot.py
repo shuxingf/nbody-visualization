@@ -107,24 +107,28 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
 
 
         
-        #if( )
-        #try:
+        if(param == 'MW'):
+            try:
 
-        #    mw = plt.scatter(MW_main[index]['x'], MW_main[index]['y'], 
-        #         s=100, marker='*',label=r'$\mathrm{MW}$',color='gold')
-        #except:
-        #    pass
-        try:
-            lmc = plt.scatter(LMC_main[lmc_ind]['x'], LMC_main[lmc_ind]['y'],
-                  s=100,marker='*',label=r'$\mathrm{LMC}$',color='magenta',alpha = 0.5)
-        except:
-            pass
+                mw = plt.scatter(MW_main[index]['x'], MW_main[index]['y'], 
+                s=100, marker='*',label=r'$\mathrm{MW}$',color='gold')
+            except:
+                pass
+        if(param == 'LMC'):
+            try:
+                lmc = plt.scatter(LMC_main[lmc_ind]['x'], LMC_main[lmc_ind]['y'],
+                    s=100,marker='*',label=r'$\mathrm{LMC}$',color='magenta',alpha = 0.5)
+            except:
+                pass
 
         plt.gca().invert_xaxis()
         plt.gca().invert_yaxis()
 
         plt.title(r'$\mathrm{CDM}$' + ' (z = ' + truncate(redshift,2) + ')',color='k',fontsize=30)
-        legend = plt.legend(loc=2,handles=[lmc], fontsize=20,frameon=False)
+        if(param == 'MW'):
+            legend = plt.legend(loc=2,handles=[mw], fontsize=20,frameon=False)
+        if(param == 'LMC'):
+            legend = plt.legend(loc=2,handles=[lmc], fontsize=20,frameon=False)
         plt.setp(legend.get_texts(), color='w')
 
         plt.axis('on')
@@ -136,7 +140,7 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
 
         if(param == "MW"):
             print("save cdm_visualization" + snapshot[i])
-            plt.savefig("/home1/shuxingf/nbody-visualization/cdm_visualization/cdm_visualization" + snapshot[i] + ".png")
+            plt.savefig("/home1/shuxingf/nbody-visualization/test/cdm_visualization" + snapshot[i] + ".png")
         if(param == "LMC"):
             print("save cdm_visualization" + snapshot[i])
             plt.savefig("/home1/shuxingf/nbody-visualization/test/cdm_visualization" + snapshot[i] + ".png")
@@ -152,23 +156,27 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         redshift = str(1./float(sidm_hlist[index]) - 1.)
         
 
-
-        #try:
-        #    mw = plt.scatter(MW_main_vi[index]['x'], MW_main_vi[index]['y'], 
-        #         s=100, marker='*',label=r'$\mathrm{MW}$',color='gold')
-        #except:
-        #    pass
-        try:
-            lmc = plt.scatter(LMC_main_vi[index]['x'], LMC_main_vi[index]['y'],
-                 s=100,marker='*',label=r'$\mathrm{LMC}$',color='magenta', alpha = 0.5)
-        except:
-            pass
+        if(param == 'MW'):
+            try:
+                mw = plt.scatter(MW_main_vi[index]['x'], MW_main_vi[index]['y'], 
+                     s=100, marker='*',label=r'$\mathrm{MW}$',color='gold')
+            except:
+                pass
+        if(param == 'LMC'):
+            try:
+                lmc = plt.scatter(LMC_main_vi[index]['x'], LMC_main_vi[index]['y'],
+                    s=100,marker='*',label=r'$\mathrm{LMC}$',color='magenta', alpha = 0.5)
+            except:
+                pass
 
         plt.gca().invert_xaxis()
         plt.gca().invert_yaxis()
 
         plt.title(r'$\mathrm{SIDM}$' + ' (z = ' +truncate(redshift,2) + ')',color='k',fontsize=30)
-        legend = plt.legend(loc=2,handles=[lmc], fontsize=20,frameon=False)
+        if(param == 'MW'):
+            legend = plt.legend(loc=2,handles=[mw], fontsize=20,frameon=False)
+        if(param == 'LMC'):
+            legend = plt.legend(loc=2,handles=[lmc], fontsize=20,frameon=False)
         plt.setp(legend.get_texts(), color='w')
 
 
@@ -180,7 +188,7 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         plt.tight_layout()
         if(param == "MW"):
             print("save sidm_visualization" + snapshot[i])
-            plt.savefig("/home1/shuxingf/nbody-visualization/sidm_visualization/sidm_visualization" + snapshot[i] + ".png")
+            plt.savefig("/home1/shuxingf/nbody-visualization/test/sidm_visualization" + snapshot[i] + ".png")
         if(param == "LMC"):
             print("save sidm_visualization" + snapshot[i])
             plt.savefig("/home1/shuxingf/nbody-visualization/test/sidm_visualization" + snapshot[i] + ".png")

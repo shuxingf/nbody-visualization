@@ -142,7 +142,9 @@ def plot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, f_cdm, f_
             rho_enclosed_sidm[i] = total_mass/volume
         redshift_cdm = 1./float(cdm_hlist[int(key)]) - 1.
         redshift_sidm = 1./float(sidm_hlist[int(key)]) - 1.
-        plt.subplot(121)
+
+
+        
         plt.loglog(r_bins,rho_enclosed_cdm)
         plt.xlabel("distance from LMC(kpc)")
         plt.ylabel("density(solarmass/kpc^3)")
