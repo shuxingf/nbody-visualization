@@ -140,10 +140,10 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
 
         if(param == "MW"):
             print("save cdm_visualization" + snapshot[i])
-            plt.savefig("/home1/shuxingf/nbody-visualization/test/cdm_visualization" + snapshot[i] + ".png")
+            plt.savefig("/home1/shuxingf/nbody-visualization/test/cdm_MW" + snapshot[i] + ".png")
         if(param == "LMC"):
             print("save cdm_visualization" + snapshot[i])
-            plt.savefig("/home1/shuxingf/nbody-visualization/test/cdm_visualization" + snapshot[i] + ".png")
+            plt.savefig("/home1/shuxingf/nbody-visualization/test/cdm_LMC" + snapshot[i] + ".png")
 
         plt.figure(figsize=(12,12))
 
@@ -188,9 +188,9 @@ def plot_snapshot(snapshot, f_short_cdm,  f_short_sidm,  LMC_main, LMC_main_vi, 
         plt.tight_layout()
         if(param == "MW"):
             print("save sidm_visualization" + snapshot[i])
-            plt.savefig("/home1/shuxingf/nbody-visualization/test/sidm_visualization" + snapshot[i] + ".png")
+            plt.savefig("/home1/shuxingf/nbody-visualization/test/sidm_MW" + snapshot[i] + ".png")
         if(param == "LMC"):
             print("save sidm_visualization" + snapshot[i])
-            plt.savefig("/home1/shuxingf/nbody-visualization/test/sidm_visualization" + snapshot[i] + ".png")
+            plt.savefig("/home1/shuxingf/nbody-visualization/test/sidm_LMC" + snapshot[i] + ".png")
 
     return
